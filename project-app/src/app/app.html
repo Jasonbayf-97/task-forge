@@ -9,7 +9,7 @@
 
   <nav
     id="sidebarMenu"
-    class="border-end vh-100 p-3 rounded-2 shadow-sm"
+    class="border-end vh-100 p-3 rounded-2 shadow-md"
     style="width: 250px; min-width: 200px"
     [class.d-none]="!isSidebarOpen"
   >
@@ -34,8 +34,59 @@
     <div class="container border rounded-2 mt-5 p-5 shadow-sm">
       <h1 class="fw-lighter">{{ dashboardMessage() }}</h1>
     </div>
-    <div class="container p-4">
-      <router-outlet></router-outlet>
+    <div class="container mt-2 p-0 d-flex justify-content-end">
+      <button
+        type="button"
+        class="btn btn-outline-secondary"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        <i class="bi bi-plus-circle-fill"></i> Add task
+      </button>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add new task</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">...</div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container p-0">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="container border rounded-2 mt-5 p-5 shadow-sm">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="container border rounded-2 mt-5 p-5 shadow-sm">
+            <p>charts go here</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
