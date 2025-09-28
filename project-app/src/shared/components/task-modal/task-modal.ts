@@ -25,7 +25,7 @@ export class TaskModal {
     this.form = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      dueDate: ['', Validators.required],
+      date: ['', Validators.required],
       location: ['', Validators.required],
     });
   }

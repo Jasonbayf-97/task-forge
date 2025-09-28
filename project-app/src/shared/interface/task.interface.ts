@@ -1,6 +1,6 @@
 export interface ITask {
   title: string;
   description: string;
-  time: string;
+  date: string;
   location: string;
 }
