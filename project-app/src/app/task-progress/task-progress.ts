@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DynamicAPI } from '../../shared/services/dynamic-api';
+import { ITask } from '../../shared/interface/task.interface';
 
 @Component({
   selector: 'app-task-progress',
@@ -6,27 +8,21 @@ import { Component } from '@angular/core';
   templateUrl: './task-progress.html',
   styleUrl: './task-progress.scss',
 })
-export class TaskProgress {
-  tasks = [
-    {
-      name: 'Walk the dogs',
-      description: 'this is a description for a task',
-      time: '2:00',
-      location: 'Park',
-    },
-    {
-      name: 'Prayer walk',
-      description: 'this is a description for task 2',
-      time: '3:00',
-      location: 'Beach',
-    },
-    {
-      name: 'Grocery shopping',
-      description: 'this is a description for task 3',
-      time: '4:00',
-      location: 'Supermarket',
-    },
-  ];
+export class TaskProgress implements OnInit {
+  tasks: ITask[] = [];
 
-  constructor() {}
+  constructor(private service: DynamicAPI) {}
+
+  ngOnInit(): void {
+    this.tasks = this.service.getTasks();
+  }
+
+  getTasks() {
+    this.tasks = this.service.getTasks();
+  }
+
+  deleteTask(task: any) {
+    this.service.deleteTask(task);
+    this.tasks = this.service.getTasks();
+  }
 }

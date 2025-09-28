@@ -1,0 +1,107 @@
+<div class="container mt-2 p-0 d-flex justify-content-end">
+  <button
+    type="button"
+    class="btn btn-outline-secondary"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+  >
+    <i class="bi bi-plus-circle-fill"></i> Add task
+  </button>
+
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add new task</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="taskTitle" class="form-label">Task Title</label>
+              <input
+                formControlName="title"
+                type="text"
+                class="form-control"
+                id="taskTitle"
+                placeholder="Enter task title"
+              />
+              @if(f['title'].invalid && f['title'].touched) {
+              <span class="text-danger">Title is required</span>
+              }
+            </div>
+            <div class="mb-3">
+              <label for="taskDescription" class="form-label"
+                >Task Description</label
+              >
+              <textarea
+                class="form-control"
+                formControlName="description"
+                id="taskDescription"
+                rows="3"
+                placeholder="Enter task description"
+              ></textarea>
+              @if(f['description'].invalid && f['description'].touched) {
+              <span class="text-danger">Description is required</span>
+              }
+            </div>
+            <div class="mb-3">
+              <label for="date" class="form-label">Due Date</label>
+              <input
+                type="date"
+                class="form-control"
+                id="date"
+                formControlName="date"
+              />
+              @if(f['date'].invalid && f['date'].touched) {
+              <span class="text-danger">Due date is required</span>
+              }
+            </div>
+            <div class="mb-3">
+              <label for="locationTitle" class="form-label">Location</label>
+              <input
+                formControlName="location"
+                type="text"
+                class="form-control"
+                id="location"
+                placeholder="Enter location"
+              />
+              @if(f['location'].invalid && f['location'].touched) {
+              <span class="text-danger">Location is required</span>
+              }
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-outline-danger"
+            (click)="resetForm()"
+          >
+            Clear form
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            [disabled]="form.invalid"
+            (click)="onSubmit()"
+            data-bs-dismiss="modal"
+          >
+            Save changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

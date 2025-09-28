@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { NAVBAR_ROUTE_CONFIG } from '../shared/config/navbar.route.config';
+import { TaskModal } from '../shared/components/task-modal/task-modal';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLink, TaskModal],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
