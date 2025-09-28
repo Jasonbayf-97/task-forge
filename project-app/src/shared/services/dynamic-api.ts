@@ -6,13 +6,20 @@ import { TASK_MOCK } from '../mock/task.mock';
   providedIn: 'root',
 })
 export class DynamicAPI {
-  task: any = TASK_MOCK;
+  task: ITask[] = TASK_MOCK;
 
   getTasks(): ITask[] {
     return this.task;
   }
 
-  postTask(newTask: ITask): ITask[] {
-    return this.task.push(newTask);
+  postTask(newTask: ITask) {
+    this.task.push(newTask);
+  }
+
+  deleteTask(deleteTask: ITask) {
+    this.task = this.getTasks().filter(
+      (task: ITask) => task.id !== deleteTask.id
+    );
+    return this.task;
   }
 }

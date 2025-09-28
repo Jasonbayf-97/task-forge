@@ -14,10 +14,15 @@ export class TaskProgress implements OnInit {
   constructor(private service: DynamicAPI) {}
 
   ngOnInit(): void {
-    this.getTasks();
+    this.tasks = this.service.getTasks();
   }
 
   getTasks() {
+    this.tasks = this.service.getTasks();
+  }
+
+  deleteTask(task: any) {
+    this.service.deleteTask(task);
     this.tasks = this.service.getTasks();
   }
 }
